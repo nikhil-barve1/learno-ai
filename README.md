@@ -1,141 +1,222 @@
-# LearnoAI
+# 🚀 LearnoAI
 
-LearnoAI is an AI-powered learning consultant that generates personalized learning roadmaps from a user's goal, background, current skill level, and available study time.
+<div align="center">
 
-Built as a hackathon MVP, LearnoAI helps learners answer practical questions quickly:
+### 🤖 AI-Powered Personalized Learning Consultant
 
-- What should I learn?
-- In what order should I learn it?
-- Which free resources should I use?
-- How long will it take?
-- What projects should I build?
-- How should I prepare for interviews?
+Generate a personalized learning roadmap in seconds using AI.
 
-The application uses Gemini to dynamically generate roadmap content. No production roadmap content is hardcoded.
+### 🌐 Live Demo
 
-## Demo
+👉 **https://learno-ai-five.vercel.app/**
 
-Demo video: _Add hackathon demo video link here._
+</div>
 
-## Live Demo
+---
 
-Live app: _Add deployed Vercel URL here._
+## 📖 Overview
 
-## Screenshots
+LearnoAI is an AI-powered learning consultant that generates structured, personalized learning roadmaps tailored to each learner's goals, experience, current skill level, and available study time.
 
-_Add screenshots of the landing page, roadmap form, loading state, and generated roadmap report here._
+Instead of searching through countless tutorials, blogs, and videos, users receive a complete learning plan in seconds—including roadmap phases, weekly study schedules, curated resources, interview preparation, beginner guidance, practice projects, and a capstone project recommendation.
 
-## Features
+Powered by **Google Gemini**, every roadmap is generated dynamically based on the learner's profile. No production roadmap content is hardcoded.
 
-- Personalized roadmap generation
-- Weekly study plan
-- Curated official and free learning resources
-- Practice project recommendations
-- Interview preparation guidance
-- Beginner mistake warnings
-- Capstone project recommendation
-- Responsive dark UI
-- Server-side Gemini integration
+---
 
-## AI Architecture
+# ✨ Features
 
-LearnoAI follows a server-side AI architecture:
+- 🤖 AI-generated personalized learning roadmap
+- 📅 Structured weekly study plan
+- 📚 Curated official documentation & free learning resources
+- 🛠 Practice project recommendations
+- 💼 Interview preparation guidance
+- 🎯 Capstone project suggestions
+- ⚠️ Beginner mistakes & best practices
+- 🔍 Smart technology validation & autocomplete
+- 🌙 Modern responsive dark UI
+- 🔒 Secure server-side Gemini integration
+- 🚀 Production deployment on Vercel
+
+---
+
+# 📸 Screenshots
+
+## 🏠 Landing Page
+
+![Landing Page](screenshots/landing_page.png)
+
+---
+
+## 🤖 AI Generated Learning Roadmap
+
+![Roadmap](screenshots/roadmap_page.png)
+
+---
+
+# 🧠 AI Architecture
 
 ```text
-User form input
-  -> Next.js client
-  -> Next.js Route Handler
-  -> Gemini API
-  -> Structured JSON response
-  -> Resource URL enrichment
-  -> Roadmap report UI
+                 User Form
+                      │
+                      ▼
+          Next.js Client Component
+                      │
+                      ▼
+      Next.js Route Handler (Server)
+                      │
+                      ▼
+          Google Gemini API
+                      │
+                      ▼
+      Structured JSON Response
+                      │
+                      ▼
+     Resource URL Enrichment Layer
+                      │
+                      ▼
+       Personalized Roadmap Report
 ```
 
-The frontend collects the learner profile and sends it to `/api/generate-roadmap`. The route handler builds a structured prompt and calls Gemini from the server using `GEMINI_API_KEY`.
+The frontend collects the learner profile and securely sends it to the backend API.
 
-Gemini dynamically generates:
+The server:
 
-- Roadmap phases
-- Weekly study plan
-- Practice projects
-- Interview preparation
-- Beginner mistakes
-- Capstone project
-- Resource selections by ID
+- Builds a structured AI prompt
+- Sends the request to Google Gemini
+- Receives structured roadmap JSON
+- Maps trusted learning resources
+- Returns a production-ready roadmap
 
 The Gemini API key is never exposed to the browser.
 
-## Why the Resource Catalog Exists
+---
 
-The resource catalog exists only to guarantee trusted, verified URLs.
+# 📚 Why Resource Catalog?
 
-Large language models can hallucinate links. To avoid that, LearnoAI gives Gemini a curated list of available resources without letting it invent URLs. Gemini selects resources by `resourceId`, and the backend maps those IDs to verified URLs from `src/data/resourceCatalog.js`.
+Large Language Models can hallucinate URLs.
 
-This keeps the roadmap AI-generated while making resource links safer and more reliable.
+To guarantee trusted learning resources, LearnoAI uses a curated resource catalog.
 
-## Tech Stack
-
-- Next.js App Router
-- React
-- JavaScript
-- Tailwind CSS
-- Next.js Route Handlers
-- Google Gemini API
-- Lucide React
-- Vercel
-
-## Folder Structure
+Instead of generating URLs directly, Gemini selects **resource IDs**, which are mapped to verified resources stored in:
 
 ```text
-src/
-  app/
-    api/
-      generate-roadmap/
-    roadmap/
-    layout.js
-    page.js
-  components/
-  data/
-    resourceCatalog.js
+src/data/resourceCatalog.js
 ```
 
-## Installation
+This guarantees:
+
+- ✅ Trusted documentation
+- ✅ Working links
+- ✅ No hallucinated URLs
+
+while still allowing AI to generate the roadmap itself.
+
+---
+
+# 🛠 Tech Stack
+
+### Frontend
+
+- Next.js (App Router)
+- React
+- JavaScript (ES6+)
+- Tailwind CSS v4
+- Lucide React
+
+### Backend
+
+- Next.js Route Handlers
+- Google Gemini API (`@google/genai`)
+
+### Deployment
+
+- Vercel
+
+---
+
+# 📂 Project Structure
+
+```text
+src
+│
+├── app
+│   ├── api
+│   │   └── generate-roadmap
+│   ├── roadmap
+│   ├── layout.js
+│   └── page.js
+│
+├── components
+│
+└── data
+    └── resourceCatalog.js
+```
+
+---
+
+# ⚙️ Getting Started
+
+Clone the repository:
+
+```bash
+git clone https://github.com/nikhil-barve1/learno-ai.git
+```
+
+Navigate into the project:
+
+```bash
+cd learno-ai
+```
+
+Install dependencies:
 
 ```bash
 npm install
 ```
 
-## Environment Variables
+---
+
+# 🔑 Environment Variables
 
 Create a local environment file:
 
-```bash
+```text
 .env.local
 ```
 
 Add your Gemini API key:
 
-```bash
-GEMINI_API_KEY=your_gemini_api_key_here
+```env
+GEMINI_API_KEY=your_gemini_api_key
 ```
 
-Do not prefix the key with `NEXT_PUBLIC_`. It must remain server-side only.
+> **Important**
+>
+> Do **not** prefix the key with `NEXT_PUBLIC_`.
+> The Gemini API key must remain server-side only.
 
-## Running Locally
+---
+
+# ▶️ Running Locally
+
+Start the development server:
 
 ```bash
 npm run dev
 ```
 
-Open:
+Open your browser:
 
 ```text
 http://localhost:3000
 ```
 
-## Production Deployment
+---
 
-The app is designed for deployment on Vercel.
+# 🚀 Deployment
+
+The production application is deployed on **Vercel** using secure server-side environment variables.
 
 Before deploying:
 
@@ -144,29 +225,34 @@ npm run lint
 npm run build
 ```
 
-In Vercel, configure `GEMINI_API_KEY` as a server-side environment variable.
+Configure the following environment variable in Vercel:
 
-## How AI Generation Works
+```text
+GEMINI_API_KEY
+```
 
-1. The user submits their learning profile.
-2. The frontend sends the form data to `/api/generate-roadmap`.
-3. The backend builds a structured prompt for Gemini.
-4. Gemini dynamically generates the roadmap JSON.
-5. The backend validates and enriches selected resource IDs with trusted URLs.
-6. The frontend renders the generated roadmap report.
+---
 
-No roadmap JSON is hardcoded into the production generation flow.
+# 🔄 How AI Generation Works
 
-## Future Improvements
+1. User submits the learning profile.
+2. The frontend sends the data to `/api/generate-roadmap`.
+3. The backend constructs a structured prompt.
+4. Google Gemini generates a personalized roadmap.
+5. The backend validates and enriches the response with trusted learning resources.
+6. The frontend renders the complete roadmap report.
 
-- User accounts
-- Saved roadmap history
-- Progress tracking
-- PDF export
-- Learning reminders
-- Multiple AI providers
-- Community roadmap sharing
+Every roadmap is generated dynamically based on the user's inputs.
 
-## License
+---
 
-This project was created for hackathon submission. License terms can be added by the project owner before public distribution.
+# 🎯 Future Improvements
+
+- 👤 User authentication
+- 💾 Save roadmap history
+- 📈 Progress tracking dashboard
+- 📄 PDF roadmap export
+- 📅 Calendar & reminder integration
+- 🤖 AI learning mentor/chat assistant
+- 🌎 Multi-language support
+- 👥 Community roadmap sharing
